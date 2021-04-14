@@ -33,3 +33,14 @@ module.exports = (sequelize) => {
     }
   });
 };
+
+/* videogame.sync({force: true}).then(function () {
+  return videogame.create({
+    id: 53,
+    name: "bruno",
+    description: "es una prueba",
+    released: 1969,
+    rating: 10,
+    platforms: "tinder"
+  })
+}) */
