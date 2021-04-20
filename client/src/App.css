@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-image: url(./background.jpg);
+  background-size: cover;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -36,3 +39,5 @@
     transform: rotate(360deg);
   }
 }
+
+

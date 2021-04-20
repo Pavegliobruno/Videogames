@@ -1,0 +1,39 @@
+.container{
+    border: 3px solid red;
+}
+
+.form{
+    border: 3px solid green ;
+}
+
+.checkboxs{
+    
+    border: 3px solid yellow ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.genn{
+    border: 3px solid red ;
+}
+
+.genn ul{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start ;
+}
+
+.platt{
+    border: 3px solid green ;
+}
+
+.platt ul{
+    
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start ;
+}

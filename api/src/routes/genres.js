@@ -19,8 +19,8 @@ router.get('/', function (req, res) {
             })
         })
         .then(() => {
-            let genresDB = Genre.findAll()
-            .then((genresDB) => res.json(genresDB))
+            Genre.findAll()
+            .then((data) => res.json(data))
         })
         .catch(err => console.error(err));
 });

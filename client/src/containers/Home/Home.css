@@ -1,0 +1,27 @@
+
+
+.home{
+    display: flex;
+    flex-direction: column;
+}
+
+.signature{
+    color:white;
+    position: absolute;
+    bottom: 0px;
+    width: 99%;
+    
+}
+
+.jueguitos {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.jueguitos div {
+    width: 450px;
+}
+.jueguitos img{
+    width: 250px;
+}
+

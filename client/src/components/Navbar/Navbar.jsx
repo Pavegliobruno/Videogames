@@ -12,32 +12,40 @@ function NavBar() {
 
     return (
         <div className="navBar">
+            <div className="videogames">
+                <Link to="/">
+                <h3>Videogames!</h3>
+                </Link>
+            </div>
             <div className="home">
                 <Link to="/home">
-                <h2>Home</h2>
+                <h3>Home</h3>
                 </Link>
+            </div>
+            
+            <div className="searchbar">
+                <form onSubmit={(e) => handleSubmit(e)}>
+                    <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Search videogame..."
+                    type="text"
+                    ></input>
+                    <NavLink to={`/results/${name}`}>
+                        <button name="name" type="submit"> Go! </button>
+                    </NavLink>
+                </form>
             </div>
             <div className="create">
                 <Link to="/create">
-                <h2>Create</h2>
+                <h3>Create</h3>
                 </Link>
             </div>
             <div className="about">
                 <Link to="/about">
-                <h2>About</h2>
+                <h3>About</h3>
                 </Link>
             </div>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Search videogame..."
-                type="text"
-                ></input>
-                <NavLink to={`/results/${name}`}>
-                    <button name="name" type="submit"> Go! </button>
-                </NavLink>
-            </form>
         </div>
     );
 }

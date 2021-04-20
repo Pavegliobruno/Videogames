@@ -4,7 +4,7 @@ export function getVideogames() {
     return fetch(`http://localhost:3001/videogames`)
       .then(response => response.json())
       .then(json => {
-        dispatch({ type: GET_VIDEOGAMES, payload: json });
+        dispatch({ type: "GET_VIDEOGAMES", payload: json });
       });
   };
 }
@@ -47,7 +47,7 @@ export function getGenres() {
 
 export function createVideogame(obj) {
   return (dispatch) =>
-    fetch("http://localhost:3001/create", {
+    fetch("http://localhost:3001/videogame", {
       method: "POST",
       headers: {
         Accept: "application/json",

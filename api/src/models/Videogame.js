@@ -6,13 +6,6 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('videogame', {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,19 +21,8 @@ module.exports = (sequelize) => {
       type: DataTypes.DECIMAL,
     },
     platforms: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
       allowNull: false,
     }
   });
 };
-
-/* videogame.sync({force: true}).then(function () {
-  return videogame.create({
-    id: 53,
-    name: "bruno",
-    description: "es una prueba",
-    released: 1969,
-    rating: 10,
-    platforms: "tinder"
-  })
-}) */
