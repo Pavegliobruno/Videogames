@@ -8,18 +8,6 @@ export function getVideogames() {
   };
 }
 
-/* export function showVideogames() {
-  return function (dispatch) {
-    dispatch({ type: LOADING_VIDEOGAME, payload: true });
-    return fetch(`http://localhost:3001/home`)
-      .then(response => response.json())
-      .then(json => {
-        dispatch({ type: SHOW_VIDEOGAMES, payload: json });
-        dispatch({ type: LOADING_VIDEOGAME, payload: false });
-      });
-  };
-} */
-
 export function searchVideogames(name) {
   return (dispatch) =>
     fetch(`http://localhost:3001/videogames?name="${name}"`)
@@ -37,6 +25,7 @@ export function getVideogameById(id) {
     fetch(`http://localhost:3001/videogame/${id}`)
       .then((resp) => resp.json())
       .then((json) => {
+        console.log("este es el json " , json);
         dispatch({
           type: "GET_VIDEOGAME_BY_ID",
           payload: json,

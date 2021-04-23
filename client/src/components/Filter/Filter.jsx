@@ -6,25 +6,25 @@ import "./Filter.css";
 export function Filter() {
   const dispatch = useDispatch()
   const genres = useSelector((store) => store.genres);
-  // eslint-disable-next-line
-  const videogames = useSelector((store) => store.videogames);
 
   useEffect(() => {
     dispatch(getGenres());
-    // eslint-disable-next-line
   }, []);
 
-  //Filter by Genre
+
+  // Filtrado por genre
   const handleFilter = (e) => {
     dispatch(orderByGenre(e.target.value));
   };
 
-  //Filter by Creator
+
+  // Filtrado por API/DB
   const handleCreator = (e) => {
     dispatch(orderByCreator(e.target.value));
   };
 
-  //Order
+
+  // Ordenado
   const handleOrder = (e) => {
     if (e.target.value === "asc_name" || e.target.value === "asc_rating") {
       dispatch(orderAsc(e.target.value));
@@ -33,11 +33,10 @@ export function Filter() {
     }
   };
 
-
   return (
     <div className="filter">
       <div>
-        <p>Filter by Genre</p>
+        <div>Filter by Genre</div>
         <select onChange={(e) => handleFilter(e)}>
           <option default>All</option>
           {genres.map((G) => (
@@ -46,15 +45,15 @@ export function Filter() {
         </select>
       </div>
       <div>
-        <p>Filter by Creator</p>
+        <div>Filter by Creator</div>
         <select onChange={(e) => handleCreator(e)} >
           <option default>All</option>
           <option value="Api">Api videogames</option>
-          <option value="Created">User-created videogames</option>
+          <option value="Created">User videogames</option>
         </select>
       </div>
       <div>
-        <p>Order</p>
+        <div>Order</div>
         <select onChange={(e) => handleOrder(e)}>
           <option default>Select</option>
           <option value="asc_name">Alphabetically (A-Z)</option>

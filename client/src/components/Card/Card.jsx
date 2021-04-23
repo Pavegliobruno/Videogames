@@ -9,10 +9,10 @@ return (
         <div className="name">{data.name}</div>
         <Link to={`/videogames/${data.id}`}>
             {data.image === null || !data.image ?
-            <img className = "img" src="https://acortar.link/2sZQP"/>
+            <img className = "img" src="https://acortar.link/e4iUP"/>
             : <img className="img" src={data.image} alt={data.name} />}
         </Link>
-        <div>It's a {data.genres} game.</div>
+        <div className="genres">It's a {data.genres} game.</div>
     </div>
 );
 }

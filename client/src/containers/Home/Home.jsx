@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Videogame from "../Videogame/Videogame";
-//import Loading from "../../components/Loading/Loading";
+import Videogames from "../Videogames/Videogames";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { Filter } from "../../components/Filter/Filter";
 import "./Home.css";
@@ -42,7 +41,7 @@ function Home() {
   return (
     <div className="home">
       <Filter />
-      <Videogame videogames={currentPage} />
+      <Videogames videogames={currentPage} />
       <Pagination
         videogamesPerPage={videogamesPerPage}
         totalVideogames={allVideogames.length}

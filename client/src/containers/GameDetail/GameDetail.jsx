@@ -17,7 +17,9 @@ function GameDetail({ id }) {
     <div className="full">
       <div className="info">
         <div className="image">
-              <img src={videogame.image} alt={videogame.name} />
+              {videogame.image === null || !videogame.image ?
+              <img className = "img" src="https://acortar.link/e4iUP"/>
+              : <img src={videogame.image} alt={videogame.name} /> }
               <div>
                 <h1>{videogame.name} </h1>
                 <h5>({videogame.released})</h5>

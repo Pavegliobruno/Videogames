@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchVideogames, resetAll } from "../../actions/index";
-import Videogame from "../Videogame/Videogame";
+import Videogames from "../Videogames/Videogames";
 import { useParams } from "react-router";
 import { Pagination } from "../../components/Pagination/Pagination";
 import "./Search.css";
@@ -40,7 +40,7 @@ export default function Search() {
   return (
     <div className="search">
         <h1>Results with {name}.</h1>
-        <Videogame videogames={currentPage} />
+        <Videogames videogames={currentPage} />
         <Pagination
           videogamesPerPage={videogamesPerPage}
           totalVideogames={searchVideogame.length}

@@ -14,13 +14,8 @@
     font-size: 18px;
 }
 
-
-
-.item {
-}
-
 .item button:hover {
     cursor: pointer;
     font-size: 130%;
     text-shadow: 0 0 5px #fff,
-};
+}

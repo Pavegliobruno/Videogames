@@ -85,7 +85,9 @@ return (
             onChange={(e) => ChangeInput(e)}
             onSubmit={(e) => handleSubmit(e)}
         >
-            <div className="divForm">
+            <div>
+
+            <div className="divForm2">
                 <div>
                     <label className="text-label">Name</label>
                     <input
@@ -122,7 +124,7 @@ return (
                     value={state.rating}
                     ></input>
                 </div>
-                
+                </div>
 
                 <div className="checkboxs">
                     <div className="genn">

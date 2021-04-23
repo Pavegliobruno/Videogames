@@ -1,14 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+
 .card{
     width: 19%;
     height: 200px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .name{
-    
-font-weight: bold;
+    font-family: 'RocknRoll One', sans-serif;
 }
 
 .card img{
     width: 250px;
     height: 140px;
 }
+
