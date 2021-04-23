@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;1,500;1,700&display=swap');
+
 .navBar {
-    /* border: 2px solid yellow; */
     width: 100%;
     height: 5vh;
     background: rgb(0, 0, 0);
@@ -11,7 +13,6 @@
 .navBar div {
   width: 20%;
   height: 90%;
-  /* border: 2px solid red; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,14 +23,17 @@
     width: 55%;
     height: 80%;
     color:rgba(255, 255, 255, 255);
-    font-family: "Lato", sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     align-items: center;
     justify-content: flex-start;
 }
 
+.videogames h3{
+  font-family: 'RocknRoll One', sans-serif;
+}
+
 .searchbar {
-  display: flex;	
-  flex-direction: col;
+  display: flex;
 }
 
 .searchbar input {
@@ -55,3 +59,5 @@
   cursor: pointer;
   text-shadow:  0 5px #fff0;
 }
+
+

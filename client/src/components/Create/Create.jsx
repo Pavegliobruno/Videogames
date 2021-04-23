@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createVideogame, getGenres } from "../../actions/index";
-import "./Form.css";
+import { createVideogame, getGenres, getVideogames } from "../../actions/index";
+import "./Create.css";
 
-function Form() {
+export default function Create() {
     const dispatch = useDispatch();
     const genres = useSelector((store) => store.genres);
 
@@ -41,44 +42,42 @@ function Form() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-    const obj = {
-    name: state.name,
-    description: state.description,
-    released: state.released,
-    rating: state.rating,
-    genres: state.genres,
-    platforms: state.platforms,
+        const obj = {
+        name: state.name,
+        description: state.description,
+        released: state.released,
+        rating: state.rating,
+        genres: state.genres,
+        platforms: state.platforms,
+        };
+
+        //Validation
+        if (!obj.name) {
+            alert('Please, enter a name')
+            return
+        }
+        if (!obj.description) {
+            alert('Dont forget the description of your videogame')
+            return
+        }
+
+        dispatch(createVideogame(obj));
+        e.target.reset();
+        alert('Videogame created successfully!');
+        dispatch(getVideogames())
+
+        setState({
+            name: "",
+            description: "",
+            released: "",
+            rating: 0,
+            genres: [],
+            platforms: [],
+        });
     };
-
-    //Validation
-    if (!obj.name) {
-        alert('Please, enter a name')
-        return
-    }
-    if (!obj.description) {
-        alert('Dont forget the description of your videogame')
-        return
-    }
-
-    dispatch(createVideogame(obj));
-    e.target.reset();
-    alert('Videogame created successfully!');
-
-    setState({
-        name: "",
-        description: "",
-        released: "",
-        rating: 0,
-        genres: [],
-        platforms: [],
-    });
-};
 
 return (
     <div className="container">
-        <header>
-            <h1 id="title">Create your videogame</h1>
-        </header>
         <form
             id="survey-form"
             className="form"
@@ -144,6 +143,7 @@ return (
                             </ul>
                         </div>
                     </div>
+
                     <div className="platt">
                         <label className="text-platforms">Platforms</label>
                         <ul className="ulPla">
@@ -160,15 +160,19 @@ return (
                             ))}
                         </ul>
                     </div>
-                
-                </div>
-                <button className="submitForm" type="submit">
+                    <button className="button" type="submit">
                     Upload videogame
-                </button>
+                    </button>
+                </div>
+                
             </div>
+            
         </form>
+        <Link to="/home">
+          <button type="submit">🡸</button>
+        </Link>
+        
     </div>
 );
 }
 
-export default Form;

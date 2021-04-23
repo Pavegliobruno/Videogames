@@ -1,0 +1,67 @@
+ .container{
+    border: 3px solid green;
+    height: 94vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    border: 3px solid blue;
+}
+
+.form{
+    border: 3px solid red ;
+    height: 550px;
+    width: 600px;
+}
+
+.checkboxs{
+    border: 3px solid greenyellow ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 600px;
+
+}
+
+.container button {
+    font-family: 'Poppins', sans-serif;
+      color: white;
+      font-size: 100%;
+      border: solid 1px white;
+      border-radius:20px;
+      background:none;
+      margin-top: 10px;
+}
+  
+  .container button:hover {
+    cursor: pointer;
+    font-size: 115%;
+    transform-origin: center;
+    text-shadow: 0 0 5px #fff,
+  };
+
+
+
+
+.genn{
+    border: 3px solid red ;
+}
+
+.genn ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start ;
+}
+
+.platt{
+    border: 3px solid green ;
+}
+
+.platt ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start ;
+} 

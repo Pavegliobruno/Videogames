@@ -1,0 +1,14 @@
+.card{
+    width: 19%;
+    height: 200px;
+}
+
+.name{
+    
+font-weight: bold;
+}
+
+.card img{
+    width: 250px;
+    height: 140px;
+}

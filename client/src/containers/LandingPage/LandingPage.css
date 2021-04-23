@@ -10,10 +10,10 @@
 }
 
 .title {
-    /* border: 10px solid red; */
     align-items: center;
     align-content: center;
     margin-bottom: 250px;
+    height: 20vh;
 }
 
 .title h2 {
@@ -32,9 +32,10 @@
 }
 
 .title button:hover {
-    cursor: pointer;
-    color: green;
-    text-shadow: 0 0 5px #fff,
+  cursor: pointer;
+  font-size: 115%;
+  transform-origin: center;
+  text-shadow: 0 0 5px #fff,
 };
 
 .border {
