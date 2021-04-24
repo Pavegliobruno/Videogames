@@ -6,23 +6,22 @@ const { Genre } = require('../db.js');
 
 const router = Router();
 
-// Obtengo todos los posibles tipos de generos de videojuegos. Los trae de la api y los guarda en la db y los usa desde alla
+// Obtengo los genres desde la API y los guardo en la DB
 
-router.get('/', function (req, res) {
-    axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
-        .then(response => response.data)
-        .then((data) => {
-            data && data.results.forEach(p => {
+router.get('/', async function (req, res) {
+    try{
+        const genresAPI = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`)
+        genresAPI.data.results.forEach(p => {
                 Genre.findOrCreate({
                     where: { name: p.name }
                 })
             })
-        })
-        .then(() => {
-            Genre.findAll()
-            .then((data) => res.json(data))
-        })
-        .catch(err => console.error(err));
-});
+            const genresDB = await Genre.findAll()
+    res.json(genresDB)
+    } catch (err) {
+        res.status(404).json({ err })
+    }
+})
+
 
 module.exports = router;

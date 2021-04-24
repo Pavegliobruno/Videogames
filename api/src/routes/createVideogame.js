@@ -7,9 +7,9 @@ const router = Router();
 // Creo el videojuego en la db
 
 router.post('/', async (req, res) => {
-    const { name, description, released, rating, platforms, genres } = req.body;
+  const { name, description, released, rating, platforms, genres } = req.body;
 
-    let platformString = platforms.join(', ')
+  let platformString = platforms.join(', ')
 
   let gameCreated = await Videogame.create({
     name,
@@ -20,11 +20,10 @@ router.post('/', async (req, res) => {
   })
 
   genres.forEach(async (G) => {
-    let genresGame = await Genre.findOne({ where: { name: G } })
-    gameCreated.addGenre(genresGame)
+      let genresGame = await Genre.findOne({ where: { name: G } })
+      gameCreated.addGenre(genresGame)
   })
-  res.send('Videogame created successfully!'
-  )
+    res.send('Videogame created successfully!')
 });
 
 module.exports = router;

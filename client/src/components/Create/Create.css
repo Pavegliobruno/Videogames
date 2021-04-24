@@ -1,70 +1,67 @@
- .container{
-    border: 3px solid green;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+.container{
     height: 94vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    justify-content: space-evenly;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form{
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    height: 550px;
+    width: 650px;
+    background-color: rgba(255, 255, 255, 0.088);
+    padding: 5px;
+    margin-bottom: 70px;
 }
 
 .divForm2{
-    border: 1px solid blue;
     display: flex;
     flex-direction: row;
 }
 
-.title{
-    border: 3px solid blue;
+.text-label{
+    
 }
 
-.form{
-    border: 3px solid red ;
-    height: 550px;
-    width: 700px;
+.label{
+    width: 145px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: none;
+    margin: 5px;
 }
+
+.title{
+    
+}
+
+
 
 .checkboxs{
-    border: 3px solid greenyellow ;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 700px;
+    width: 650px;
 
 }
 
-.container button {
-    font-family: 'Poppins', sans-serif;
-      color: white;
-      font-size: 100%;
-      border: solid 1px white;
-      border-radius:20px;
-      background:none;
-      margin-top: 10px;
-}
-  
-  .container button:hover {
-    cursor: pointer;
-    font-size: 115%;
-    transform-origin: center;
-    text-shadow: 0 0 5px #fff,
-  };
 
-
-
-
-.genn{
-    border: 3px solid red ;
-}
 
 .genn ul{
     display: flex;
     flex-direction: column;
     justify-content: flex-start ;
+    font-size: 15px;
 }
 
 .platt{
-    border: 3px solid green ;
     
 }
 

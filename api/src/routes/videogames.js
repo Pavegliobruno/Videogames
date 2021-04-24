@@ -1,7 +1,5 @@
 require("dotenv").config();
 const { Router } = require('express');
-// const { Op } = require("sequelize");
-const fetch = require('node-fetch');
 const axios = require('axios');
 const { API_KEY } = process.env;
 
@@ -11,32 +9,35 @@ const router = Router();
 
 
 // Si me envia un name por query, busca los primeros 15 que tengan ese name en la api
-// y despues, lo busca en la db y los concatenated
+// y despues, lo busca en la db y los concatena
 
 // Si no me envia un name, entrega los primeros 15 videojuegos
 
 router.get('/', async function (req, res) {
-    const { name } = req.query;
+  const { name } = req.query;
+  try {
     if (name) {
-        axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}&page_size=15`)
-        .then(response => response.data)
-        .then(data => {
-            let gamesDB = Videogame.findAll({ where: {name: name}});
-            let gamesAPI = data.results.map((X) => {
-                var game = {
-                    name: X.name,
-                    image: X.background_image,
-                    genres: X.genres && X.genres.map((p) => p.name).filter(p => p != null).join(', '),
-                    //platforms: X.platforms.map((p) => p.platform.name).filter(p => p != null).join(', '),
-                    //source: 'Api',
-                    id: X.id,
-                    //rating: X.rating
-                };
-                return game;
-            })
-            res.json(gamesAPI.concat(gamesDB))
-        })
-        .catch(() => { res.status(404).json({ error: "Videogame not found" })})
+      let gamesDB = await Videogame.findAll({ include: [Genre] });
+      let gamesDBFull = gamesDB.map((J) => J.toJSON())
+      gamesDBFull.forEach(C => {
+        C.source = "Created", 
+        C.genres = C.genres.map((genre) => genre.name).join(", ")
+      });
+
+      let gamesAPI = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}&page_size=15`)
+      gamesAPIFull = gamesAPI.data.results.map((X) => {
+        var game = {
+          name: X.name,
+          image: X.background_image,
+          genres: X.genres && X.genres.map((p) => p.name).filter(p => p != null).join(', '),
+          source: 'Api',
+          id: X.id,
+          rating: X.rating
+        };
+        return game;
+      })
+
+      res.json(gamesAPIFull.concat(gamesDBFull))
     } else {
       let gamesResults = []
       let apiRAWG = `https://api.rawg.io/api/games?key=${API_KEY}`
@@ -48,15 +49,15 @@ router.get('/', async function (req, res) {
             name: G.name,
             image: G.background_image,
             genres: G.genres.map((gen) => gen.name),
-            //platforms: G.platforms.map((p) => p.platform.name).filter(p => p != null).join(', '),
-            //source: "Api",
+            source: "Api",
             id: G.id,
-            //rating: G.rating
+            rating: G.rating
           };
           return game
         })
         gamesResults = gamesResults.concat(dataGame)
       }
+      
       let dbGames = await Videogame.findAll({ include: [Genre] })
       let jsonGames = dbGames.map((J) => J.toJSON())
       jsonGames.forEach(C => {
@@ -66,27 +67,10 @@ router.get('/', async function (req, res) {
       gamesResults = gamesResults.concat(jsonGames)
     
       res.json(gamesResults)
-}
-  
-    
-    
-    /* else {
-        axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&page_size=15`)
-        .then(response => response.data)
-        .then(data => {
-            let videogames = data.results.map((X) => {
-            var game = {
-                name: X.name,
-                image: X.background_image,
-                genres: X.genres && X.genres.map((p) => p.name).filter(p => p != null).join(', '),
-                // platforms: X.platforms.map((p) => p.platform.name).filter(p => p != null).join(', ')
-            }
-            return game;
-            })
-        res.json(videogames)
-        })
-        .catch((err) => { res.status(404).json({ err })})
-    } */
+    }
+  } catch (err) {
+    res.status(404).json({ err })
+  }
 });
 
 

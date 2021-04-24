@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchVideogames, resetAll } from "../../actions/index";
+import { searchVideogames } from "../../actions/index";
 import Videogames from "../Videogames/Videogames";
 import { useParams } from "react-router";
 import { Pagination } from "../../components/Pagination/Pagination";
@@ -21,7 +21,6 @@ export default function Search() {
   const [videogamesPerPage] = useState(9);
 
   useEffect(() => {
-    /* dispatch(resetAll()); */
     dispatch(searchVideogames(name));
   }, [name]);
 

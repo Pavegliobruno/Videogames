@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getGenres, orderByGenre, orderByCreator, orderAsc, orderDesc } from "../../actions/index";
+import { getGenres, filterByGenre, orderByCreator, orderAsc, orderDesc } from "../../actions/index";
 import "./Filter.css";
 
 export function Filter() {
@@ -14,13 +14,7 @@ export function Filter() {
 
   // Filtrado por genre
   const handleFilter = (e) => {
-    dispatch(orderByGenre(e.target.value));
-  };
-
-
-  // Filtrado por API/DB
-  const handleCreator = (e) => {
-    dispatch(orderByCreator(e.target.value));
+    dispatch(filterByGenre(e.target.value));
   };
 
 
@@ -28,9 +22,22 @@ export function Filter() {
   const handleOrder = (e) => {
     if (e.target.value === "asc_name" || e.target.value === "asc_rating") {
       dispatch(orderAsc(e.target.value));
-    } else {
+    } else if (e.target.value === "desc_name" || e.target.value === "desc_rating") {
       dispatch(orderDesc(e.target.value));
+    } else {
+      dispatch(filterByGenre(e.target.value));
     }
+  };
+  
+
+  // Filtrado por API/DB
+  const handleCreator = (e) => {
+    if (e.target.value === "Api" || e.target.value === "Created") {
+      dispatch(orderByCreator(e.target.value));
+    } else {
+      dispatch(filterByGenre(e.target.value));
+    }
+    
   };
 
   return (
@@ -45,21 +52,21 @@ export function Filter() {
         </select>
       </div>
       <div>
+        <div>Order</div>
+        <select onChange={(e) => handleOrder(e)}>
+          <option default>All</option>
+          <option value="asc_name">Alphabetically (A-Z)</option>
+          <option value="desc_name">Alphabetically (Z-A)</option>
+          <option value="asc_rating">Rating (Lower-Higher)</option>
+          <option value="desc_rating">Rating (Higher-Lower)</option>
+        </select>
+      </div>
+      <div>
         <div>Filter by Creator</div>
         <select onChange={(e) => handleCreator(e)} >
           <option default>All</option>
           <option value="Api">Api videogames</option>
           <option value="Created">User videogames</option>
-        </select>
-      </div>
-      <div>
-        <div>Order</div>
-        <select onChange={(e) => handleOrder(e)}>
-          <option default>Select</option>
-          <option value="asc_name">Alphabetically (A-Z)</option>
-          <option value="desc_name">Alphabetically (Z-A)</option>
-          <option value="asc_rating">Rating (Lower-Higher)</option>
-          <option value="desc_rating">Rating (Higher-Lower)</option>
         </select>
       </div>
     </div>

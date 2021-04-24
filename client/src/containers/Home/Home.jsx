@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getVideogames, resetAll } from "../../actions/index";
 import Videogames from "../Videogames/Videogames";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { Filter } from "../../components/Filter/Filter";
@@ -10,19 +11,24 @@ function Home() {
 
   const filteredVideogames = useSelector((state) => state.filteredVideogames);
   const filterBy = useSelector((state) => state.filterBy);
-  //const loading = useSelector((state) => state.loading);
   const orderBy = useSelector((state) => state.orderBy);
   const videogames = useSelector((state) => state.videogames);
+
+
+  useEffect(() => {
+    dispatch(resetAll());
+    dispatch(getVideogames());
+  }, []);
+
+
+  // Filtrado y Ordenado
   let allVideogames;
-
-
-  // Filter and Order
   filterBy === "All" && orderBy === "Select"
     ? (allVideogames = videogames.slice())
     : (allVideogames = filteredVideogames.slice());
     
 
-  //Pagination
+  // Paginacion
   function paginate(e, num) {
     e.preventDefault();
     setPage(num);
@@ -37,6 +43,7 @@ function Home() {
   // index of the first element of each page
   let currentPage = allVideogames.slice(indexFirtsCard, indexLastCard);
   // videogames of the current page
+
 
   return (
     <div className="home">

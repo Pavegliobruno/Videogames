@@ -21,16 +21,10 @@ export default function rootReducer(state = initialState, action) {
         videogames: Object.values(action.payload),
       };
 
-    case "SHOW_VIDEOGAMES":
+    case "SEARCH_VIDEOGAMES":
       return {
         ...state,
-        videogames: Object.values(action.payload),
-      };
-
-    case "GET_GENRES":
-      return {
-        ...state,
-        genres: action.payload,
+        searchVideogameByName: action.payload,
       };
 
     case "GET_VIDEOGAME_BY_ID":
@@ -39,17 +33,17 @@ export default function rootReducer(state = initialState, action) {
         searchVideogameById: action.payload,
       };
 
-    case "SEARCH_VIDEOGAMES":
+    case "GET_GENRES":
       return {
         ...state,
-        searchVideogameByName: action.payload,
+        genres: action.payload,
       };
 
     case "CREATE_VIDEOGAME":
       return {
         ...state,
         createVideogame: action.payload,
-      };
+      };    
 
     case "RESET":
       return {
@@ -60,53 +54,29 @@ export default function rootReducer(state = initialState, action) {
         filterBy: "All",
       }
 
-    case "LOADING_VIDEOGAME":
-      return {
-        ...state,
-        loading: action.payload,
-      };
-
-    case "ORDER_BY_GENRE":
+    case "FILTER_BY_GENRE":
       return {
         ...state,
         filteredVideogames: action.payload.videogameGenre,
         filterBy: action.payload.genre,
       };
 
-    case "ORDER_BY_CREATOR":
-      return {
-        ...state,
-        filteredVideogames: action.payload.videogames,
-        filterBy: action.payload.source,
-      };
-
     case "ORDER_ASC_NAME":
-      return {
-        ...state,
-        filteredVideogames: action.payload.videogamesOrder,
-        orderBy: action.payload.name,
-      };
-
     case "ORDER_ASC_RATING":
-      return {
-        ...state,
-        filteredVideogames: action.payload.videogamesOrder,
-        orderBy: action.payload.name,
-      };
-
     case "ORDER_DESC_NAME":
-      return {
-        ...state,
-        filteredVideogames: action.payload.videogamesOrder,
-        orderBy: action.payload.name,
-      };
-
     case "ORDER_DESC_RATING":
       return {
         ...state,
         filteredVideogames: action.payload.videogamesOrder,
         orderBy: action.payload.name,
       };
+
+    case "ORDER_BY_CREATOR":
+    return {
+      ...state,
+      filteredVideogames: action.payload.videogames,
+      filterBy: action.payload.source,
+    };
 
     default:
       return state;

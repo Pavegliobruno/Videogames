@@ -1,19 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./LandingPage.css"
-          import { getVideogames, resetAll } from "../../actions/index";
-          
-            import { useDispatch } from "react-redux";
-            import React, { useEffect } from "react";
-          
+
 
 export default function LandingPage() {
-
-          const dispatch = useDispatch();
-                useEffect(() => {
-                  dispatch(resetAll());
-                  dispatch(getVideogames());
-                }, []);
-
 
   return (
     <div class="background">

@@ -18,7 +18,6 @@ export default function Create() {
     });
 
     const randomPlatforms = ['PC', 'PlayStation 4', 'PlayStation 5', 'Xbox',]
-    const [platforms, setPlatforms] = useState([]);
 
     const ChangeInput = (e) => {
         if (e.target.name === "genres" || e.target.name === "platforms") {
@@ -78,6 +77,7 @@ export default function Create() {
 
 return (
     <div className="container">
+        <h1>Create you Videogame!</h1>
         <form
             id="survey-form"
             className="form"
@@ -91,7 +91,7 @@ return (
                 <div>
                     <label className="text-label">Name</label>
                     <input
-                    className="btm"
+                    className="label"
                     type="text"
                     name="name"
                     value={state.name}
@@ -100,7 +100,7 @@ return (
                 <div>
                     <label className="text-label">Description</label>
                     <input
-                    className="btm"
+                    className="label"
                     type="text"
                     name="description"
                     value={state.description}
@@ -109,7 +109,7 @@ return (
                 <div>
                     <label className="text-label">Released</label>
                     <input
-                    className="btm"
+                    className="label"
                     type="date"
                     name="released"
                     value={state.released}
@@ -118,7 +118,7 @@ return (
                 <div>
                     <label className="text-label">Rating</label>
                     <input
-                    className="btm"
+                    className="label"
                     type="number"
                     name="rating"
                     value={state.rating}
@@ -166,14 +166,8 @@ return (
                     Upload videogame
                     </button>
                 </div>
-                
             </div>
-            
         </form>
-        <Link to="/home">
-          <button type="submit">🡸</button>
-        </Link>
-        
     </div>
 );
 }
