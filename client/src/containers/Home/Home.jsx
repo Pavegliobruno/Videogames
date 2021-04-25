@@ -6,7 +6,7 @@ import { Pagination } from "../../components/Pagination/Pagination";
 import { Filter } from "../../components/Filter/Filter";
 import "./Home.css";
 
-function Home() {
+export default function Home() {
   const dispatch = useDispatch();
 
   const filteredVideogames = useSelector((state) => state.filteredVideogames);
@@ -14,19 +14,16 @@ function Home() {
   const orderBy = useSelector((state) => state.orderBy);
   const videogames = useSelector((state) => state.videogames);
 
-
   useEffect(() => {
     dispatch(resetAll());
     dispatch(getVideogames());
   }, []);
 
-
   // Filtrado y Ordenado
   let allVideogames;
   filterBy === "All" && orderBy === "Select"
-    ? (allVideogames = videogames.slice())
-    : (allVideogames = filteredVideogames.slice());
-    
+    ? (allVideogames = videogames)
+    : (allVideogames = filteredVideogames);
 
   // Paginacion
   function paginate(e, num) {
@@ -37,18 +34,15 @@ function Home() {
   const [page, setPage] = useState(1);
   const [videogamesPerPage] = useState(15);
 
-  let indexLastCard = page * videogamesPerPage;
-  // index of the last element of each page
-  let indexFirtsCard = indexLastCard - videogamesPerPage;
-  // index of the first element of each page
-  let currentPage = allVideogames.slice(indexFirtsCard, indexLastCard);
-  // videogames of the current page
+  let lastCardPerPage = page * videogamesPerPage;
+  let firtsCardPerPage = lastCardPerPage - videogamesPerPage;
+  let currentPageGames = allVideogames.slice(firtsCardPerPage, lastCardPerPage);
 
 
   return (
     <div className="home">
       <Filter />
-      <Videogames videogames={currentPage} />
+      <Videogames videogames={currentPageGames} />
       <Pagination
         videogamesPerPage={videogamesPerPage}
         totalVideogames={allVideogames.length}
@@ -56,6 +50,4 @@ function Home() {
       />
     </div>
   );
-}
-
-export default Home;
+};

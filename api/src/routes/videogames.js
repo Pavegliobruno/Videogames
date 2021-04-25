@@ -8,36 +8,56 @@ const { Videogame, Genre } = require('../db.js');
 const router = Router();
 
 
-// Si me envia un name por query, busca los primeros 15 que tengan ese name en la api
-// y despues, lo busca en la db y los concatena
-
-// Si no me envia un name, entrega los primeros 15 videojuegos
+// Query -> name ? db + api : 100 primeros juegos
 
 router.get('/', async function (req, res) {
   const { name } = req.query;
+  
   try {
     if (name) {
-      let gamesDB = await Videogame.findAll({ include: [Genre] });
-      let gamesDBFull = gamesDB.map((J) => J.toJSON())
-      gamesDBFull.forEach(C => {
-        C.source = "Created", 
-        C.genres = C.genres.map((genre) => genre.name).join(", ")
-      });
-
-      let gamesAPI = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}&page_size=15`)
-      gamesAPIFull = gamesAPI.data.results.map((X) => {
-        var game = {
-          name: X.name,
-          image: X.background_image,
-          genres: X.genres && X.genres.map((p) => p.name).filter(p => p != null).join(', '),
-          source: 'Api',
-          id: X.id,
-          rating: X.rating
-        };
-        return game;
-      })
-
-      res.json(gamesAPIFull.concat(gamesDBFull))
+      let gamesDB = await Videogame.findOne({where: {name: name}, include: [Genre]});
+      if (gamesDB){
+          let X = gamesDB
+          gamesDBFull = {
+              id: X.id,
+              name: X.name,
+              rating: X.rating,
+              description: X.description,
+              released: X.released,
+              platforms: X.platforms,
+              createdAt: X.createdAt,
+              updateAt: X.updatedAt,
+              source: "Created",
+              genres: X.genres.map(p => p.name).join(', ')
+          }
+        let gamesAPI = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}&page_size=15`) 
+        gamesAPIFull = gamesAPI.data.results.map((X) => {
+          var game = {
+            name: X.name,
+            image: X.background_image,
+            genres: X.genres && X.genres.map((p) => p.name).filter(p => p != null).join(', '),
+            source: 'Api',
+            id: X.id,
+            rating: X.rating
+          };
+          return game;
+        })
+        res.json(gamesAPIFull.concat(gamesDBFull))
+      } else {
+        let gamesAPI = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${API_KEY}&page_size=15`) 
+        gamesAPIFull = gamesAPI.data.results.map((X) => {
+          var game = {
+            name: X.name,
+            image: X.background_image,
+            genres: X.genres && X.genres.map((p) => p.name).filter(p => p != null).join(', '),
+            source: 'Api',
+            id: X.id,
+            rating: X.rating
+          };
+          return game;
+        })
+        res.json(gamesAPIFull)
+      }
     } else {
       let gamesResults = []
       let apiRAWG = `https://api.rawg.io/api/games?key=${API_KEY}`

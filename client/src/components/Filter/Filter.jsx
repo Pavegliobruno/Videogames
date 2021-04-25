@@ -54,7 +54,7 @@ export function Filter() {
       <div>
         <div>Order</div>
         <select onChange={(e) => handleOrder(e)}>
-          <option default>All</option>
+          <option value="All" default>All</option>
           <option value="asc_name">Alphabetically (A-Z)</option>
           <option value="desc_name">Alphabetically (Z-A)</option>
           <option value="asc_rating">Rating (Lower-Higher)</option>

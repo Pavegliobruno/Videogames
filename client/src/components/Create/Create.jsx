@@ -50,13 +50,13 @@ export default function Create() {
         platforms: state.platforms,
         };
 
-        //Validation
+        // Validaciones
         if (!obj.name) {
-            alert('Please, enter a name')
+            alert("Hey! Don't forget the name")
             return
         }
         if (!obj.description) {
-            alert('Dont forget the description of your videogame')
+            alert("Hey! Don't forget the description")
             return
         }
 

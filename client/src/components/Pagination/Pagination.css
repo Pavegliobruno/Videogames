@@ -1,4 +1,4 @@
-.navPag {
+.pagination {
     border: 2px solid white;
     display: flex;
     justify-content: center;
@@ -7,7 +7,7 @@
     background-color: rgba(0, 0, 0, 0.108);
 }
 
-.navPag button{
+.pagination button{
     background: none;
     border: none;
     color: white;

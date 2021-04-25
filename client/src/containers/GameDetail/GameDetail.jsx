@@ -44,7 +44,6 @@ function GameDetail({ id }) {
       <Link to="/home">
           <button className="button" type="submit">🡸</button>
       </Link>
-
     </div>    
   );
 }

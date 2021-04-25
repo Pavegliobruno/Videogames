@@ -3,23 +3,19 @@ import "./Pagination.css";
 
 export const Pagination = ({ videogamesPerPage, totalVideogames, paginate }) => {
   const pageNumbers = [];
+  const numOfPages = Math.ceil(totalVideogames / videogamesPerPage)
 
-  for (let i = 1; i <= Math.ceil(totalVideogames / videogamesPerPage); i++) {
-    //The Math.ceil () function returns the closest integer greater than or equal to a given number.
-    pageNumbers.push(i); // Number of pages
+  for (let i = 1; i <= numOfPages ; i++) {
+    pageNumbers.push(i);
   }
 
   return (
-    <nav className="navPag">
+    <nav className="pagination">
         {pageNumbers.map((num) => (
           <div key={num} className="item">
-            <button
-              onClick={(e) => paginate(e, num)}
-              className="page-link"
-            >
+            <button onClick={(e) => paginate(e, num)}>
               {num}
             </button>
-            
           </div>
         ))}
     </nav>

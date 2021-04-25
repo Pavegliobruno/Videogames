@@ -10,7 +10,7 @@ export function getVideogames() {
 
 export function searchVideogames(name) {
   return (dispatch) =>
-    fetch(`http://localhost:3001/videogames?name="${name}"`)
+    fetch(`http://localhost:3001/videogames?name=${name}`)
       .then((resp) => resp.json())
       .then((json) => {
         dispatch({

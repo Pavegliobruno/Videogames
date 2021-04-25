@@ -14,15 +14,14 @@ function NavBar() {
         <div className="navBar">
             <div className="videogames">
                 <Link to="/">
-                <h3>Videogames!</h3>
+                    <h3>Videogames!</h3>
                 </Link>
             </div>
             <div className="home">
                 <Link to="/home">
-                <h3>Home</h3>
+                    <h3>Home</h3>
                 </Link>
             </div>
-            
             <div className="searchbar">
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <input
