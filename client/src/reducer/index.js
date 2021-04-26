@@ -3,14 +3,11 @@ const initialState = {
   genres: [],
   searchVideogame: [],
   createVideogame: null,
-  platforms: [],
   searchVideogameById: [],
   searchVideogameByName: [],
   filteredVideogames: [],
   orderBy: "Select",
   filterBy: "All",
-  loading: false,
-  
 };
 
 export default function rootReducer(state = initialState, action) {

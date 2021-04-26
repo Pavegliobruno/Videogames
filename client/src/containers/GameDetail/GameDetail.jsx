@@ -10,14 +10,14 @@ function GameDetail({ id }) {
 
   useEffect(() => {
     dispatch(getVideogameById(id));
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (    
     <div className="full">
       <div className="info">
         <div className="image">
               {videogame.image === null || !videogame.image ?
-              <img className = "img" src="https://acortar.link/e4iUP"/>
+              <img className = "img" src="https://acortar.link/e4iUP" alt="Link caido"/>
               : <img src={videogame.image} alt={videogame.name} /> }
               <div>
                 <h1>{videogame.name} </h1>
@@ -26,7 +26,7 @@ function GameDetail({ id }) {
         </div>
         <div className="details">
           <div className="text">
-            <h2>About this game</h2>
+            <h2>About this game:</h2>
             <p>{videogame.description}</p>
           </div>
           <div className="Genres">

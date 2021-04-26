@@ -4,7 +4,7 @@ import "./Loading.css";
 export default function loading ({videogames}) {
     return (
         <div>
-            <img className="loading" src="https://www.seprelab.com/assets/img/loader.gif"/>
+            <img className="loading" src="https://www.seprelab.com/assets/img/loader.gif" alt="Link caido"/>
         </div>
     );
 };

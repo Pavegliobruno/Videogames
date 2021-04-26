@@ -25,7 +25,6 @@ export function getVideogameById(id) {
     fetch(`http://localhost:3001/videogame/${id}`)
       .then((resp) => resp.json())
       .then((json) => {
-        console.log("este es el json " , json);
         dispatch({
           type: "GET_VIDEOGAME_BY_ID",
           payload: json,
@@ -82,7 +81,7 @@ export const filterByGenre = (genres) => (dispatch, getState) => {
     filteredGames = getState()
       .videogames.slice()
       .filter((game) =>
-        (game.genres || []).includes(genres)
+        (game.genres).includes(genres)
       )
   };
   dispatch({

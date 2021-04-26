@@ -9,7 +9,7 @@ export function Filter() {
 
   useEffect(() => {
     dispatch(getGenres());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 
   // Filtrado por genre
@@ -28,7 +28,6 @@ export function Filter() {
       dispatch(filterByGenre(e.target.value));
     }
   };
-  
 
   // Filtrado por API/DB
   const handleCreator = (e) => {

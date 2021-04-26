@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { createVideogame, getGenres, getVideogames } from "../../actions/index";
+import { createVideogame, getGenres } from "../../actions/index";
 import "./Create.css";
 
 export default function Create() {
@@ -17,7 +17,11 @@ export default function Create() {
         platforms: [],
     });
 
-    const randomPlatforms = ['PC', 'PlayStation 4', 'PlayStation 5', 'Xbox',]
+    useEffect(() => {
+        dispatch(getGenres());
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    const randomPlatforms = ["PC", "iOS", "Android", "macOS",  "PlayStation 4", "PlayStation 5", "Xbox", "PS Vita"]
 
     const ChangeInput = (e) => {
         if (e.target.name === "genres" || e.target.name === "platforms") {
@@ -34,9 +38,7 @@ export default function Create() {
     }
     };
 
-    useEffect(() => {
-        dispatch(getGenres());
-    }, []);
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -52,18 +54,21 @@ export default function Create() {
 
         // Validaciones
         if (!obj.name) {
-            alert("Hey! Don't forget the name")
+            alert("Hey! Don't forget the name.")
             return
         }
         if (!obj.description) {
-            alert("Hey! Don't forget the description")
+            alert("Hey! Don't forget the description.")
+            return
+        }if (obj.rating > 5) {
+            alert("Hey! The rating should be less than 5.")
             return
         }
 
         dispatch(createVideogame(obj));
         e.target.reset();
-        alert('Videogame created successfully!');
-        dispatch(getVideogames())
+        alert("Videogame created successfully!");
+        /* dispatch(getVideogames()) */
 
         setState({
             name: "",
@@ -86,55 +91,52 @@ return (
             onSubmit={(e) => handleSubmit(e)}
         >
             <div>
-
-            <div className="divForm2">
-                <div>
-                    <label className="text-label">Name</label>
-                    <input
-                    className="label"
-                    type="text"
-                    name="name"
-                    value={state.name}
-                    ></input>
+                <div className="divTitles">
+                    <div>
+                        <label>-Name-</label>
+                        <input
+                        className="label"
+                        type="text"
+                        name="name"
+                        value={state.name}
+                        ></input>
+                    </div>
+                    <div>
+                        <label>-Description-</label>
+                        <input
+                        className="label"
+                        type="text"
+                        name="description"
+                        value={state.description}
+                        ></input>
+                    </div>
+                    <div>
+                        <label>-Released-</label>
+                        <input
+                        className="label"
+                        type="date"
+                        name="released"
+                        value={state.released}
+                        ></input>
+                    </div>
+                    <div>
+                        <label>-Rating-</label>
+                        <input
+                        className="label"
+                        type="number"
+                        name="rating"
+                        value={state.rating}
+                        ></input>
+                    </div>
                 </div>
-                <div>
-                    <label className="text-label">Description</label>
-                    <input
-                    className="label"
-                    type="text"
-                    name="description"
-                    value={state.description}
-                    ></input>
-                </div>
-                <div>
-                    <label className="text-label">Released</label>
-                    <input
-                    className="label"
-                    type="date"
-                    name="released"
-                    value={state.released}
-                    ></input>
-                </div>
-                <div>
-                    <label className="text-label">Rating</label>
-                    <input
-                    className="label"
-                    type="number"
-                    name="rating"
-                    value={state.rating}
-                    ></input>
-                </div>
-                </div>
-
                 <div className="checkboxs">
-                    <div className="genn">
-                        <label className="text-label">Genres</label>
-                        <div className="divGen">
-                            <ul className="ulGen">
+                    <div className="checks">
+                        <label>-Genres-</label>
+                        <div>
+                            <div>
                                 {genres.map((gen) => (
-                                <div className="liGen" key={gen.name}>
+                                <div key={gen.name}>
                                     <input
-                                    className="input"
                                     type="checkbox"
                                     name="genres"
                                     value={gen.name}
@@ -142,17 +144,15 @@ return (
                                     <label name={gen}>{gen.name}</label>
                                 </div>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
                     </div>
-
-                    <div className="platt">
-                        <label className="text-platforms">Platforms</label>
-                        <ul className="ulPla">
+                    <div className="checks">
+                        <label>-Platforms-</label>
+                        <div >
                             {randomPlatforms.map((P) => (
-                            <div className="liPla" key={P}>
+                            <div key={P}>
                                 <input
-                                className="input"
                                 type="checkbox"
                                 name="platforms"
                                 value={P}
@@ -160,14 +160,17 @@ return (
                                 <label name={P}>{P}</label>
                             </div>
                             ))}
-                        </ul>
+                        </div>
                     </div>
                     <button className="button" type="submit">
-                    Upload videogame
+                        Upload videogame
                     </button>
                 </div>
             </div>
         </form>
+        <Link to="/home">
+            <button className="button2" type="submit">🡸</button>
+        </Link>
     </div>
 );
 }

@@ -6,8 +6,10 @@ function About() {
         <div className="about">
             <h1>Videogames!</h1>
             <p>
-            Created during my time at Henry Bootcamp using HTML, CSS, React, Redux, NodeJS, Express, Sequelize and PostgreSQL as database.
+            Created in individual project in Henry Bootcamp using HTML, CSS, React,
+            Redux, NodeJS, Express, Sequelize, and PostgreSQL as the database.
             </p>
+            <h5>Built by Bruno Paveglo</h5>
         </div>
     );
 }

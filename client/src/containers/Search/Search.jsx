@@ -6,7 +6,6 @@ import Videogames from "../Videogames/Videogames";
 import { Pagination } from "../../components/Pagination/Pagination";
 import "./Search.css";
 
-
 export default function Search() {
   const dispatch = useDispatch();
   let { name } = useParams()
@@ -15,7 +14,7 @@ export default function Search() {
 
   useEffect(() => {
     dispatch(searchVideogames(name));
-  }, [name]);
+  }, [name]); // eslint-disable-line react-hooks/exhaustive-deps
   
   // Paginacion
   function paginate(e, num) {
@@ -24,7 +23,7 @@ export default function Search() {
   }
 
   const [page, setPage] = useState(1);
-  const [videogamesPerPage] = useState(9);
+  const [videogamesPerPage] = useState(10);
 
   let lastCardPerPage = page * videogamesPerPage;
   let firtsCardPerPage = lastCardPerPage - videogamesPerPage;
@@ -32,13 +31,18 @@ export default function Search() {
 
   return (
     <div className="search">
-        <h1>Results with {name}.</h1>
-        <Videogames videogames={currentPageGames} />
-        <Pagination
-          videogamesPerPage={videogamesPerPage}
-          totalVideogames={searchVideogame.length}
-          paginate={paginate}
-        />
+        {searchVideogame.length > 0 ?
+        <>
+          <h1>Results with {name}!</h1>
+          <Videogames videogames={currentPageGames} />
+          <Pagination
+            videogamesPerPage={videogamesPerPage}
+            totalVideogames={searchVideogame.length}
+            paginate={paginate}
+          />
+        </>
+        : <img className="img" src="https://acortar.link/xjEvD" alt="Link caido"/>
+        }
     </div>
   )
 };

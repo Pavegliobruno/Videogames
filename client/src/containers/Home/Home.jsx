@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
     dispatch(resetAll());
     dispatch(getVideogames());
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Filtrado y Ordenado
   let allVideogames;

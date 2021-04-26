@@ -68,7 +68,7 @@ router.get('/', async function (req, res) {
           var game = {
             name: G.name,
             image: G.background_image,
-            genres: G.genres.map((gen) => gen.name),
+            genres: G.genres.map((gen) => gen.name).filter(p => p != null).join(', '),
             source: "Api",
             id: G.id,
             rating: G.rating
@@ -82,7 +82,7 @@ router.get('/', async function (req, res) {
       let jsonGames = dbGames.map((J) => J.toJSON())
       jsonGames.forEach(C => {
         C.source = "Created", 
-        C.genres = C.genres.map((genre) => genre.name)
+        C.genres = C.genres.map((genre) => genre.name).filter(p => p != null).join(', ')
       });
       gamesResults = gamesResults.concat(jsonGames)
     

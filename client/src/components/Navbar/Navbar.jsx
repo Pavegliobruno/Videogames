@@ -3,12 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css"
 
 function NavBar() {
-  const [name, setName] = useState("");
+    const [name, setName] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setName("");
-  }
+    function handleSubmit(e) {
+        e.preventDefault();
+        setName("");
+    }
 
     return (
         <div className="navBar">

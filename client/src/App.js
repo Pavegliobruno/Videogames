@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from "react-router-dom";
 import LandingPage from "./containers/LandingPage/LandingPage.jsx"
-import Home from "./containers/Home/Home.jsx"
 import NavBar from "./components/Navbar/Navbar.jsx"
+import Home from "./containers/Home/Home.jsx"
+import Search from "./containers/Search/Search";
 import Create from "./components/Create/Create.jsx"
 import About from "./components/About/About.jsx"
-import Search from "./containers/Search/Search";
 import GameDetail from "./containers/GameDetail/GameDetail.jsx";
 import "./App.css";
 
@@ -23,7 +23,7 @@ function App() {
         <Route path="/results" component={NavBar} />
         <Route
           exact path="/results/:name"
-          render={({ match }) => <Search props={match.params} />}
+          component={Search} 
         />
 
         <Route path="/videogames" component={NavBar} />
