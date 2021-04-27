@@ -1,9 +1,9 @@
 import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideogames, resetAll } from "../../actions/index";
-import Videogames from "../Videogames/Videogames";
+import Videogames from "../../components/Videogames/Videogames";
 import { Pagination } from "../../components/Pagination/Pagination";
-import { Filter } from "../../components/Filter/Filter";
+import { Filter } from "../Filter/Filter";
 import "./Home.css";
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
 
   return (
     <div className="home">
-      <Filter />
+      <Filter paginate={paginate} />
       <Videogames videogames={currentPageGames} />
       <Pagination
         videogamesPerPage={videogamesPerPage}

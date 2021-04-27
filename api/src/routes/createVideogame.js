@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
   genres.forEach(async (G) => {
       let genresGame = await Genre.findOne({ where: { name: G } })
-      gameCreated.addGenre(genresGame)
+      await gameCreated.addGenre(genresGame)
   })
     res.send('Videogame created successfully!')
 });

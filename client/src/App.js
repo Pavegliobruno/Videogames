@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route } from "react-router-dom";
-import LandingPage from "./containers/LandingPage/LandingPage.jsx"
+import LandingPage from "./components/LandingPage/LandingPage.jsx"
 import NavBar from "./components/Navbar/Navbar.jsx"
 import Home from "./containers/Home/Home.jsx"
 import Search from "./containers/Search/Search";
-import Create from "./components/Create/Create.jsx"
+import Create from "./containers/Create/Create.jsx"
 import About from "./components/About/About.jsx"
 import GameDetail from "./containers/GameDetail/GameDetail.jsx";
 import "./App.css";

@@ -33,6 +33,10 @@
     margin: 5px;
 }
 
+.label:hover{
+    cursor: pointer;
+}
+
 .checkboxs{
     display: flex;
     flex-direction: row;
@@ -50,12 +54,11 @@
     align-content: center;
 }
 
-.checks ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start ;
-    font-size: 15px;
+.checks input:hover {
+    cursor: pointer;
 }
+
+
 
 .button2 {
     font-family: 'Poppins', sans-serif;

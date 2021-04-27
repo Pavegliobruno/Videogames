@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getGenres, filterByGenre, orderByCreator, orderAsc, orderDesc } from "../../actions/index";
 import "./Filter.css";
 
-export function Filter() {
+export function Filter({paginate}) {
   const dispatch = useDispatch()
   const genres = useSelector((store) => store.genres);
 
@@ -14,7 +14,8 @@ export function Filter() {
 
   // Filtrado por genre
   const handleFilter = (e) => {
-    dispatch(filterByGenre(e.target.value));
+    dispatch(filterByGenre(e.target.value))
+    paginate(e, 1);
   };
 
 
@@ -33,8 +34,10 @@ export function Filter() {
   const handleCreator = (e) => {
     if (e.target.value === "Api" || e.target.value === "Created") {
       dispatch(orderByCreator(e.target.value));
+      paginate(e, 1);
     } else {
       dispatch(filterByGenre(e.target.value));
+      paginate(e, 1);
     }
     
   };

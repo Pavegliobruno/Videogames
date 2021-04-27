@@ -76,13 +76,11 @@ export const filterByGenre = (genres) => (dispatch, getState) => {
   let filteredGames = [];
 
   if (genres === "All") {
-    filteredGames = getState().videogames.slice();
+    filteredGames = getState().videogames;
   } else {
-    filteredGames = getState()
-      .videogames.slice()
-      .filter((game) =>
-        (game.genres).includes(genres)
-      )
+    filteredGames = getState().videogames.filter((game) =>
+      (game.genres).includes(genres)
+    )
   };
   dispatch({
     type: "FILTER_BY_GENRE",
@@ -95,7 +93,7 @@ export const filterByGenre = (genres) => (dispatch, getState) => {
 
 
 export const orderAsc = (type) => (dispatch, getState) => {
-  const filtered = getState().filteredVideogames.slice();
+  const filtered = getState().filteredVideogames;
   let videogamesOrder = []
 
     if (type === "asc_name") {
@@ -120,7 +118,7 @@ export const orderAsc = (type) => (dispatch, getState) => {
 
 
 export const orderDesc = (type) => (dispatch, getState) => {
-  const filtered = getState().filteredVideogames.slice();
+  const filtered = getState().filteredVideogames;
   let videogamesOrder = []
     
     if (type === "desc_name") {
@@ -145,9 +143,7 @@ export const orderDesc = (type) => (dispatch, getState) => {
 
 
 export const orderByCreator = (source) => (dispatch, getState) => {
-  const videogames = getState()
-    .videogames.slice()
-    .filter(function (G) {
+  const videogames = getState().videogames.filter(function (G) {
       return G.source === source
     });
   dispatch({

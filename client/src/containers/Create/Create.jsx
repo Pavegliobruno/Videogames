@@ -60,6 +60,9 @@ export default function Create() {
         if (!obj.description) {
             alert("Hey! Don't forget the description.")
             return
+        }if (!obj.released) {
+            alert("Hey! Don't forget the date.")
+            return
         }if (obj.rating > 5) {
             alert("Hey! The rating should be less than 5.")
             return

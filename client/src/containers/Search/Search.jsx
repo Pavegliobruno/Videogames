@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { searchVideogames } from "../../actions/index";
-import Videogames from "../Videogames/Videogames";
+import Videogames from "../../components/Videogames/Videogames";
 import { Pagination } from "../../components/Pagination/Pagination";
+import NotFound from "../../components/NotFound/NotFound";
 import "./Search.css";
 
 export default function Search() {
@@ -41,7 +42,7 @@ export default function Search() {
             paginate={paginate}
           />
         </>
-        : <img className="img" src="https://acortar.link/xjEvD" alt="Link caido"/>
+        : <NotFound />
         }
     </div>
   )
