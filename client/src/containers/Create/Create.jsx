@@ -8,7 +8,7 @@ export default function Create() {
     const dispatch = useDispatch();
     const genres = useSelector((store) => store.genres);
 
-    const [state, setState] = useState({
+    const [game, setGame] = useState({
         name: "",
         description: "",
         released: "",
@@ -25,14 +25,14 @@ export default function Create() {
 
     const ChangeInput = (e) => {
         if (e.target.name === "genres" || e.target.name === "platforms") {
-        const arr = state[e.target.name];
-        setState({
-            ...state,
+        const arr = game[e.target.name];
+        setGame({
+            ...game,
             [e.target.name]: arr.concat(e.target.value),
         });
     } else {
-        setState({
-            ...state,
+        setGame({
+            ...game,
             [e.target.name]: e.target.value,
         });
     }
@@ -44,12 +44,12 @@ export default function Create() {
         e.preventDefault();
 
         const obj = {
-        name: state.name,
-        description: state.description,
-        released: state.released,
-        rating: state.rating,
-        genres: state.genres,
-        platforms: state.platforms,
+        name: game.name,
+        description: game.description,
+        released: game.released,
+        rating: game.rating,
+        genres: game.genres,
+        platforms: game.platforms,
         };
 
         // Validaciones
@@ -63,17 +63,18 @@ export default function Create() {
         }if (!obj.released) {
             alert("Hey! Don't forget the date.")
             return
-        }if (obj.rating > 5) {
-            alert("Hey! The rating should be less than 5.")
+        }if (obj.rating > 5 || obj.rating < 0) {
+            alert("Hey! The rating should be between 0 and 5.")
             return
         }
+
 
         dispatch(createVideogame(obj));
         e.target.reset();
         alert("Videogame created successfully!");
         /* dispatch(getVideogames()) */
 
-        setState({
+        setGame({
             name: "",
             description: "",
             released: "",
@@ -101,7 +102,7 @@ return (
                         className="label"
                         type="text"
                         name="name"
-                        value={state.name}
+                        value={game.name}
                         ></input>
                     </div>
                     <div>
@@ -110,7 +111,7 @@ return (
                         className="label"
                         type="text"
                         name="description"
-                        value={state.description}
+                        value={game.description}
                         ></input>
                     </div>
                     <div>
@@ -119,7 +120,7 @@ return (
                         className="label"
                         type="date"
                         name="released"
-                        value={state.released}
+                        value={game.released}
                         ></input>
                     </div>
                     <div>
@@ -128,7 +129,7 @@ return (
                         className="label"
                         type="number"
                         name="rating"
-                        value={state.rating}
+                        value={game.rating}
                         ></input>
                     </div>
                 </div>

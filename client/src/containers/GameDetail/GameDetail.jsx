@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getVideogameById } from "../../actions/index";
+import NotFound from "../../components/NotFound/NotFound";
 import "./GameDetail.css";
 
 function GameDetail({ id }) {
@@ -17,7 +18,7 @@ function GameDetail({ id }) {
       <div className="info">
         <div className="image">
               {videogame.image === null || !videogame.image ?
-              <img className = "img" src="https://acortar.link/e4iUP" alt="Link caido"/>
+              <NotFound image={"noimage"} />
               : <img src={videogame.image} alt={videogame.name} /> }
               <div>
                 <h1>{videogame.name} </h1>

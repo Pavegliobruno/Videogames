@@ -42,7 +42,7 @@ export default function Search() {
             paginate={paginate}
           />
         </>
-        : <NotFound />
+        : <NotFound image={"nogames"} />
         }
     </div>
   )
