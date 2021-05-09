@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { createVideogame, getGenres } from "../../actions/index";
 import "./Create.css";
@@ -7,10 +6,13 @@ import "./Create.css";
 export default function Create() {
     const dispatch = useDispatch();
     const genres = useSelector((store) => store.genres);
+    const genres1 = genres.slice(0, 10)
+    const genres2 = genres.slice(10, 20)
 
     const [game, setGame] = useState({
         name: "",
         description: "",
+        image: "",
         released: "",
         rating: 0,
         genres: [],
@@ -46,6 +48,7 @@ export default function Create() {
         const obj = {
         name: game.name,
         description: game.description,
+        image: game.image,
         released: game.released,
         rating: game.rating,
         genres: game.genres,
@@ -77,6 +80,7 @@ export default function Create() {
         setGame({
             name: "",
             description: "",
+            image: "",
             released: "",
             rating: 0,
             genres: [],
@@ -86,7 +90,7 @@ export default function Create() {
 
 return (
     <div className="container">
-        <h1>Create you Videogame!</h1>
+        <h1>Create your Videogame!</h1>
         <form
             id="survey-form"
             className="form"
@@ -94,6 +98,7 @@ return (
             onChange={(e) => ChangeInput(e)}
             onSubmit={(e) => handleSubmit(e)}
         >
+            <div>
             <div>
                 <div className="divTitles">
                     <div>
@@ -133,12 +138,34 @@ return (
                         ></input>
                     </div>
                 </div>
+                <div className="imagediv">
+                    <label>-Image URL-</label>
+                    <input
+                    className="imagein"
+                    type="text"
+                    name="image"
+                    value={game.image}
+                    ></input>
+                </div>
+            </div>
                 <div className="checkboxs">
                     <div className="checks">
                         <label>-Genres-</label>
-                        <div>
+                        <div className="gendivs">
                             <div>
-                                {genres.map((gen) => (
+                                {genres1.map((gen) => (
+                                <div key={gen.name}>
+                                    <input
+                                    type="checkbox"
+                                    name="genres"
+                                    value={gen.name}
+                                    ></input>
+                                    <label name={gen}>{gen.name}</label>
+                                </div>
+                                ))}
+                            </div>
+                            <div>
+                                {genres2.map((gen) => (
                                 <div key={gen.name}>
                                     <input
                                     type="checkbox"
@@ -166,15 +193,13 @@ return (
                             ))}
                         </div>
                     </div>
-                    <button className="button" type="submit">
-                        Upload videogame
-                    </button>
+                    
                 </div>
+                <button className="button" type="submit">
+                    Create!
+                </button>
             </div>
         </form>
-        <Link to="/home">
-            <button className="button2" type="submit">🡸</button>
-        </Link>
     </div>
 );
 }

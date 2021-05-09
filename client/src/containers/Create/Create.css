@@ -13,12 +13,18 @@
 .form{
     border: 1px solid rgb(255, 255, 255);
     border-radius: 20px;
-    height: 550px;
+    height: 500px;
     width: 650px;
     background-color: rgba(255, 255, 255, 0.088);
     padding: 5px;
-    margin-bottom: 70px;
+    margin-bottom: 120px;
+    box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.313);
 }
+
+/* .divdiv{
+    display: flex;
+    align-content: space-around;
+} */
 
 .divTitles{
     display: flex;
@@ -43,7 +49,18 @@
     justify-content: space-evenly;
     align-items: center;
     width: 650px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
+.gendivs{
+    display: flex;
+    
+}
+
+.perro{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .checks{
@@ -54,23 +71,23 @@
     align-content: center;
 }
 
+
 .checks input:hover {
     cursor: pointer;
 }
 
-
-
-.button2 {
-    font-family: 'Poppins', sans-serif;
-    color: white;
-    font-size: 120%;
-    border: solid 1px white;
-    border-radius:20px;
-    background:none;
+.imagediv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.imagein{
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: none;
+    margin: 5px;
 }
 
-.button2:hover {
-    cursor: pointer;
-    font-size: 125%;
-    text-shadow: 0 0 5px #fff,
-};

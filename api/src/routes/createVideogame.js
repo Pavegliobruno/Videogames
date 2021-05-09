@@ -7,13 +7,14 @@ const router = Router();
 // Creo el videojuego en la db
 
 router.post('/', async (req, res) => {
-  const { name, description, released, rating, platforms, genres } = req.body;
+  const { name, description, image, released, rating, platforms, genres } = req.body;
 
   let platformString = platforms.join(', ')
 
   let gameCreated = await Videogame.create({
     name,
     description,
+    image, 
     released,
     rating,
     platforms: platformString,

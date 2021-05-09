@@ -13,7 +13,7 @@ return (
             <NotFound image={"noimage"} />
             : <img className="img" src={data.image} alt={data.name} />}
         </Link>
-        <div className="genres">It's a {data.genres} game.</div>
+        <div className="genres">{data.genres}</div>
     </div>
 );
 }

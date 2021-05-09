@@ -20,6 +20,7 @@ router.get('/:id', async function (req, res) {
                 const information = {
                     id: X.id,
                     name: X.name,
+                    image: X.image,
                     rating: X.rating,
                     description: X.description,
                     released: X.released,
