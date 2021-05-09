@@ -1,8 +1,8 @@
 # Videogames!
 
 <p align="center">
-  <img height="250" src="https://res.cloudinary.com/dlexbrcrv/image/upload/v1620505242/Proyects/Proyecto_Individual_qgppfq.png" />
-   <img height="250" src="https://res.cloudinary.com/dlexbrcrv/image/upload/v1620523771/Proyects/size_yinufq.gif" />
+  
+   <img height="300" src="https://res.cloudinary.com/dlexbrcrv/image/upload/v1620523771/Proyects/size_yinufq.gif" />
 </p>
 
 ## Enunciado
