@@ -5,60 +5,43 @@
    <img height="250" src="https://res.cloudinary.com/dlexbrcrv/image/upload/v1620523771/Proyects/size_yinufq.gif" />
 </p>
 
-## Objetivos del Proyecto
-
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
-- Usar y practicar testing.
-
-## Horarios y Fechas
-
-El proyecto tendrá una duración máxima de tres semanas. En el caso de que completan todas las tareas antes de dicho lapso podrán avisar a su Instructor para coordinar una fecha de presentación del trabajo (DEMO).
-
 ## Enunciado
 
-La idea general es crear una aplicación en la cual se puedan ver los distintos videojuegos disponibles junto con información relevante de los mismos utilizando la api externa [rawg](https://rawg.io/apidocs) y a partir de ella poder, entre otras cosas:
+Aplicación en la cual se puedan ver los distintos videojuegos disponibles junto con información relevante de los mismos utilizando la api externa [rawg](https://rawg.io/apidocs) y a partir de ella poder, entre otras cosas:
 
-- Buscar videjuegos
-- Filtrarlos / Ordenarlos
-- Agregar nuevos videojuegos
+- Buscar videjuegos.
+- Filtrarlos por genero y creador.
+- Ordenarlos alfabeticamente y por su rating.
+- Agregar nuevos videojuegos.
 
-### Requerimientos mínimos:
+## Tecnologías Utilizadas:
 
-A continuación se detallaran los requerimientos mínimos para la aprobación del proyecto individial. Aquellos que deseen agregar más funcionalidades podrán hacerlo. En cuanto al diseño visual no va a haber wireframes ni prototipos prefijados sino que tendrán libertad de hacerlo a su gusto pero tienen que aplicar los conocimientos de estilos vistos en el curso para que quede agradable a la vista.
+- React
+- Redux
+- Express
+- Sequelize - Postgres
+- Styled-Components
 
-#### Tecnologías necesarias:
+## Requisitos Frontend:
 
-- [ ] React
-- [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
+**Pagina inicial**:
 
-#### Frontend
+- [ ] Alguna imagen de fondo representativa al proyecto.
+- [ ] Botón para ingresar al home (`Ruta principal`).
 
-Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
+**Ruta principal**:
 
-**Pagina inicial**: deben armar una landing page con
-
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
-
-**Ruta principal**: debe contener
-
-- [ ] Input de búsqueda para encontrar videojuegos por nombre
+- [ ] Input de búsqueda para encontrar videojuegos por nombre.
 - [ ] Área donde se verá el listado de videojuegos. Deberá mostrar su:
   - Imagen
   - Nombre
   - Géneros
-- [ ] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating
-- [ ] Paginado para ir buscando y mostrando los siguientes videojuegos
+  - Rating
+- [ ] Botones/Opciones para filtrar por género y por videojuego existente o agregado por nosotros.
+- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los videojuegos por orden alfabético y por rating.
+- [ ] Paginado para ir buscando y mostrando los siguientes videojuegos.
 
-**IMPORTANTE**: Dentro de la Ruta Principal se deben mostrar tanto los videjuegos traidos desde la API como así también los de la base de datos. Debido a que en la API existen alrededor de 500 mil juegos, por cuestiones de performance pueden tomar la simplificación de obtener y paginar los primeras 100.
-
-**Ruta de detalle de videojuego**: debe contener
+**Ruta de detalle de videojuego**:
 
 - [ ] Los campos mostrados en la ruta principal para cada videojuegos (imagen, nombre, y géneros)
 - [ ] Descripción
@@ -66,37 +49,18 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 - [ ] Rating
 - [ ] Plataformas
 
-**Ruta de creación de videojuegos**: debe contener
+**Ruta de creación de videojuegos**:
 
 - [ ] Un formulario **controlado** con los siguientes campos
   - Nombre
   - Descripción
   - Fecha de lanzamiento
   - Rating
-- [ ] Posibilidad de seleccionar/agregar varios géneros
-- [ ] Posibilidad de seleccionar/agregar varias plataformas
-- [ ] Botón/Opción para crear un nuevo videojuego
+  - Imagen
+  - Géneros
+  - Plataformas
 
-#### Base de datos
-
-El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
-
-- [ ] Videojuego con las siguientes propiedades:
-  - ID: \* No puede ser un ID de un videojuego ya existente en la API rawg
-  - Nombre \*
-  - Descripción \*
-  - Fecha de lanzamiento
-  - Rating
-  - Plataformas \*
-- [ ] Genero con las siguientes propiedades:
-  - ID
-  - Nombre
-
-#### Backend
-
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
-
-**IMPORTANTE**: No está permitido utilizar los filtrados, ordenamientos y paginados brindados por la API externa, todas estas funcionalidades tienen que implementarlas ustedes.
+## Requisitos Backend:
 
 - [ ] **GET /videogames**:
   - Obtener un listado de los primeras 15 videojuegos
@@ -115,8 +79,20 @@ Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
   - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
   - Crea un videojuego en la base de datos
 
-#### Testing
+## Base de datos
 
-- [ ] Al menos tener un componente del frontend con sus tests respectivos
-- [ ] Al menos tener una ruta del backend con sus tests respectivos
-- [ ] Al menos tener un modelo de la base de datos con sus tests respectivos
+El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
+
+- [ ] Videojuego con las siguientes propiedades:
+  - ID: \* No puede ser un ID de un videojuego ya existente en la API rawg
+  - Nombre \*
+  - Descripción \*
+  - Fecha de lanzamiento
+  - Rating
+  - Plataformas \*
+- [ ] Genero con las siguientes propiedades:
+
+  - ID
+  - Nombre
+
+  **_Proyecto individual final realizado por Bruno Paveglio para el bootcamp Soy Henry!_**
