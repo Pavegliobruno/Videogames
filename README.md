@@ -1,5 +1,4 @@
-# Videogames!
-**_Proyecto individual final realizado por Bruno Paveglio para el bootcamp Soy Henry!_**
+# Videogames! **_Proyecto individual final realizado por Bruno Paveglio para el bootcamp Soy Henry!_**
 
 <p align="center">
   
