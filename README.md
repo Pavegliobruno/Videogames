@@ -1,4 +1,5 @@
 # Videogames!
+**_Proyecto individual final realizado por Bruno Paveglio para el bootcamp Soy Henry!_**
 
 <p align="center">
   
@@ -95,4 +96,3 @@ El modelo de la base de datos deberá tener las siguientes entidades (Aquellas p
   - ID
   - Nombre
 
-  **_Proyecto individual final realizado por Bruno Paveglio para el bootcamp Soy Henry!_**
